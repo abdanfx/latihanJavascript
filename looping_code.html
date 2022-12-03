@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Looping</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+            // loop through Collection
+            // for (const cat of cats) {
+            //     console.log(cat);
+            // }
+
+            let n = 5;
+            let firstString = "";
+            for (let i = 1; i <= n; i++) {
+                for (let j = 0; j < i; j++) {
+                    firstString += "  " + "*";
+                }
+                firstString += "\n";
+            }
+            console.log(firstString);
+
+            // Standard Loop
+            let m = 0;
+            let secondString = "";
+            for (let index1 = 5; index1 > m; index1--) {
+                // statement here
+                for (let index2 = 1; index2 <= index1; index2++) {
+                    // statement here
+                    secondString += "  " + "*";
+                }
+                secondString += "\n";
+            }
+            console.log(secondString);
+
+            let o = 5;
+            let thirdString = "";
+            for (let index3 = 0; index3 <= o; index3++) {
+                // statement here
+                for (let index4 = 0; index4 < o - index3; index4++) {
+                    // statement here
+                    thirdString += `  `;   
+                }
+
+                for (let index5 = 0; index5 < index3; index5++) {
+                    // Statement here
+                    thirdString += ` *`;
+                    
+                }
+                thirdString += "\n";
+            }
+            console.log(thirdString);
+
+            let p = 5;
+            let fourthString = "";
+            for (let index6 = 0; index6 <= p; index6++) {
+                // statement here
+                for (let index7 = 0; index7 < index6; index7++) {
+                    // statement here
+                    fourthString += `  `;
+                }
+
+                for (let index8 = 5; index8 > index6; index8--) {
+                    // Statement here
+                    fourthString +=  ` *`;
+
+                }
+                fourthString += "\n";
+            }
+            console.log(fourthString);
+
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

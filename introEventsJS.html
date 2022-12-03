@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Events</title>
+    <script>
+        // add an eventListener
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const btn = document.querySelector('button');
+            const myText = document.querySelector('p');
+            const first = document.querySelector('#firstParagraph');
+
+            // EVent bubbling and capture in nested element
+            const selectBubble = document.querySelector('#bubbleOne');
+            const displayElement = document.querySelector('#displayElement');
+            const buttonBubbleOne = document.querySelector('#buttonBubbleOne');
+
+            function handleClick(e2) {
+                displayElement.innerHTML += `You clicked on ${e2.currentTarget.tagName} element \n`;
+
+                // stop bubbling
+                e2.stopPropagation();
+                const elementbubblingCheck = e2.bubbles; // this check event bubbling
+
+                // create element
+                const node2 = document.createElement('p');
+                // create text of the Element
+                const textNode2 = document.createTextNode(`${elementbubblingCheck}`);
+                // append text to the element
+                node2.appendChild(textNode2);
+                // append the new Paragraph's element
+                document.body.appendChild(node2);
+
+            }
+
+            selectBubble.addEventListener('click', handleClick);
+            buttonBubbleOne.addEventListener('click', handleClick);
+            document.body.addEventListener('click', handleClick);
+            // EVent bubbling and capture in nested element
+
+            function showText(e) {
+                // e.stopPropagation();
+                e.target.textContent = 'You click me!';
+                console.log(e);
+            }
+
+            btn.addEventListener('click', showText);
+
+            first.addEventListener('mouseout', changeTextParagraph);
+
+            function changeTextParagraph(textValue) {
+                textValue.target.innerHTML = 'You hover this paragraph';
+                console.log(textValue);
+            }
+
+            // appenChild (add new Element)
+            const btn2 = document.querySelector('#addParagraph');
+
+            // add an Event Listener
+            btn2.addEventListener('click', newParagraph);
+            // remove an Event Listener
+            // btn2.removeEventListener('click', newParagraph);
+
+            function newParagraph(paramParagraph) {
+                paramParagraph.stopPropagation();
+                // create element
+                const node = document.createElement('p');
+                // create text of the Element
+                const textNode = document.createTextNode('I am the new paraghraph!');
+                // append text to the element
+                node.appendChild(textNode);
+                // append the new Paragraph's element
+                document.body.appendChild(node);
+            }
+        });
+
+        // leave page confirmation Pop up
+        window.addEventListener('beforeunload', (event) => {
+            event.preventDefault();
+            if (event) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Introduction to Events</h1>
+    <button>Show Text</button>
+    <button id="addParagraph">Add Paragraph</button>
+    <p></p>
+    <p id="firstParagraph">Hover mouse to this paragraph</p>
+
+    <!-- Event Bubbling and Capture -->
+    <div id="bubbleOne">
+        <button id="buttonBubbleOne">Button Element</button>
+    </div>
+
+    <pre id="displayElement"></pre>
+</body>
+
+</html>

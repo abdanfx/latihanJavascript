@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if else Statement</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const txt = document.querySelector('.content');
+            
+            const num = 5;
+            console.log(num);
+
+            const num2 = 5;
+            console.log(num2);
+
+            if (num !== num2) {
+                txt.innerHTML = "The number is not same value and the same type";
+            } else {
+                txt.innerHTML = "The Number has the same value and the same type";
+            }
+
+            // Using variable name will return true
+            let cheese = 'Cheddar';
+
+            if (cheese) {
+                console.log('Yay! Cheese available for making cheese on toast.');
+            } else {
+                console.log('No cheese on toast for you today.');
+            }
+
+            // return default value, false.
+            let shoppingDone = false;
+            let childsAllowance;
+
+            if (shoppingDone) { // don't need to explicitly specify '=== true'
+                childsAllowance = 10;
+            } else {
+                childsAllowance = 5;
+            }
+            console.log(childsAllowance);
+
+            // Common Mistake
+            let x = 12;
+            if (x === 5 || x === 7 || x === 10 || x === 20) {
+                console.log('Test Common Mistake');
+            } else {
+                console.log('nothing');
+            }
+
+            const para = document.createElement("h2");
+            para.innerText = "This is new Heading";
+
+            document.body.appendChild(para);
+
+
+        });
+    </script>
+</head>
+<body>
+    <h1>If Else</h1>
+    <p class="content"></p>
+</body>
+</html>

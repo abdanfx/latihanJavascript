@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Useful event target example</title>
+    <style>
+        .tile {
+            height: 100px;
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+    </div>
+
+    <script>
+      function random(number) {
+        return Math.floor(Math.random()*number);
+      }
+
+      function bgChange() {
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        return rndCol;
+      }
+
+      // const container = document.querySelector('#container');
+      // container.addEventListener('click', event => event.target.style.backgroundColor = bgChange());
+
+      const elementTile = document.querySelectorAll('.tile');
+      
+      for (let index = 0; index < elementTile.length; index++) {
+        
+        elementTile[index].addEventListener('click', (e) => {
+          e.target.style.backgroundColor = bgChange();
+        });
+        
+      }
+
+      
+    </script>
+</body>
+
+</html>

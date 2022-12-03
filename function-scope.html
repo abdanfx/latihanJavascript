@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Scope</title>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let globalValue = 135;
+            function name() {
+                let idName = `125`;
+                console.log(idName);
+                console.log(globalValue);
+            }
+            name();
+            console.log(globalValue);
+            // console.log(idName); // will cause Error
+
+            {
+                var fisrtValue = 'Hello';
+            }
+            console.log(fisrtValue);
+
+            {
+                const secondValue = 'Second Hello';
+            }
+            // console.log(secondValue); // will cause an Error
+
+            function sayHi() {
+                console.log(`Hello User`);
+            }
+
+            const user1 = sayHi;
+            user1();
+
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Callback</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function displayContent(val) {
+                document.getElementById("demo").innerHTML = val;
+            }
+
+            function calculation(firstVal, secondVal, myCallBack) {
+                let result = firstVal + secondVal;
+                myCallBack(result);
+            }
+
+            let add = calculation(5, 15, displayContent);
+            
+            // another Example
+            function introName(name) {
+                console.log(`His name is ${name}`);
+                return `His name is ${name}`;
+            }
+
+            function askName(callBackName) {
+                const name = prompt("What's your name ?");
+                return callBackName(name)
+            }
+
+            let user = askName(introName);
+            console.log('dsadas',user);
+
+            // my Custom
+            function fileContent(content) {
+                console.log(content);
+            }
+
+            function askContent(callBackContent) {
+                const content = `it is a Person!`;
+                callBackContent(content);
+            }
+
+            let content = askContent(fileContent);
+
+        });
+    </script>
+</head>
+<body>
+    <h1 id="demo"></h1>
+</body>
+</html>

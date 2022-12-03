@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Event Bubbling</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectContainerTitle = document.querySelector('#containerTitle');
+            const selectHeader = document.querySelector('#header');
+
+            function handleClick(event) {
+                // event.stopPropagation();
+                console.log(`you click on ${event.currentTarget.tagName}`);
+                const bubbleCheck = event.bubbles;
+                if (event.bubbles) {
+                    console.log(`The Event is bubbles up through DOM, value : ${bubbleCheck}`);
+                }
+            }
+
+            selectHeader.addEventListener('click', handleClick);
+            selectContainerTitle.addEventListener('click', handleClick);
+            document.body.addEventListener('click', handleClick);
+
+            const selectContainerArticle = document.querySelector('#containerArticle');
+            const selectArticle = document.querySelector('#article');
+
+            selectContainerArticle.addEventListener('click', handleClick);
+            selectArticle.addEventListener('click', handleClick)
+
+
+        });
+    </script>
+    <style>
+        #containerTitle {
+            cursor: crosshair;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="containerTitle">
+        <h1 id="header">News of Jakarta</h1>
+    </div>
+    <div id="containerArticle">
+        <section id="article">
+            the weather news today. Today weather is cloud and little raining.
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Closure</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () =>  {
+            function init() {
+                let name = 'First Closure'; // name is a local variable created by init
+                
+                function displayName() {
+                    // displayName() is the inner function, a closure
+                    console.log(name); // use variable declared in the parent function
+                }
+                
+                return displayName();
+            }
+            const showInit = init();
+
+            // another example
+            function makeFunc() {
+                const name2 = 'Second Closure';
+                function displayName2() {
+                    console.log(name2);
+                }
+                return displayName2;
+            }
+            const myFunc = makeFunc();
+            myFunc();
+
+            // anoteher Examplpe
+            function sayHello(name) {
+                return function (word = "Welcome ") {
+                    return word + name;
+                }
+            }
+
+            const user1 = sayHello("User 1");
+            console.log(user1());
+
+
+            // DOM with Closure
+            const item1 = document.querySelector('#item1');
+
+
+            function updateNewElement(event) {
+                // Closure
+                function changeElement() {
+                    event.target.textContent = "Button Updated!";
+                    event.target.style.background = "yellow";
+                }
+                return changeElement();
+            }
+
+            item1.addEventListener('click', updateNewElement);
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Javascript Closure</h1>
+    <button id="item1">Update Button</button>
+</body>
+</html>
